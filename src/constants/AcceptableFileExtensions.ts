@@ -1,0 +1,1 @@
+export default ['doc', 'docx', 'jpg', 'jpeg', 'png', 'gif', 'xls', 'xlsx', 'pdf'];
