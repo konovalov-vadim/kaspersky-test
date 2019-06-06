@@ -15,9 +15,17 @@ const reducer: Reducer<IAuthor[], {payload: IAuthor; type: string}> = (
 ) => {
   switch (action.type) {
     case ADD:
-      return [action.payload, ...state];
+      const authors = [action.payload, ...state];
+
+      Utility.appLocalStorage.set('authors', authors);
+
+      return authors;
     case REMOVE:
-      return state.filter(el => el.id !== action.payload.id);
+      const authors2 = state.filter(el => el.id !== action.payload.id);
+
+      Utility.appLocalStorage.set('authors', authors2);
+
+      return authors2;
     case RESET:
       return [];
     default:

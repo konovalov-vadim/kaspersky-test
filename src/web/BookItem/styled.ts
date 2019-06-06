@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import ColorPalette from 'constants/ColorPalette';
 import Typography from "constants/Typography";
+import {StyledButtonCSS} from "commonComponents/styled";
 
 export const StyledContainer = styled.div`
   width: 250px;
   background: ${ColorPalette.gray3};
   font-size: ${Typography.size.small};
-  margin: 0 15px 15px 0;
+  margin: 15px 7.5px 0;
 `;
 
 export const StyledCover = styled.div<{imageUrl: string}>`
@@ -39,10 +40,5 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledButton = styled.div`
-  cursor: pointer;
-  transition: .3s;
-  
-  :hover {
-    opacity: .4;
-  }
+  ${StyledButtonCSS}
 `;

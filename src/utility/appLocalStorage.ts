@@ -18,7 +18,10 @@ const initStorage = () => {
     const initializedStorage: ILocalStorage = {
       books: INITIAL_DATA,
       authors: INITIAL_AUTHORS,
-      covers: INITIAL_BOOK_COVERS
+      covers: INITIAL_BOOK_COVERS,
+      titleSort: 'asc',
+      yearSort: 'asc',
+      lastSort: 'titleSort'
     };
 
     localStorage.setItem(localStorageName, JSON.stringify(initializedStorage));
@@ -40,6 +43,8 @@ const set = (type: keyof ILocalStorage, value: ILocalStorage[keyof ILocalStorage
 
   if (appStorage) {
     appStorage[type] = value;
+
+    localStorage.setItem(localStorageName, JSON.stringify(appStorage));
   }
 };
 

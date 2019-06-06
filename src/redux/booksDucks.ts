@@ -17,7 +17,11 @@ const reducer: Reducer<IBook[], {payload: IBook; type: string}> = (
     case ADD:
       return [action.payload, ...state];
     case REMOVE:
-      return state.filter(el => el.id !== action.payload.id);
+      const books = state.filter(el => el.id !== action.payload.id);
+
+      Utility.appLocalStorage.set('books', books);
+
+      return books;
     case RESET:
       return [];
     default:

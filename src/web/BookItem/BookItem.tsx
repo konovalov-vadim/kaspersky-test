@@ -23,7 +23,7 @@ const BookItem = ({book, bookCovers, authors, onRemove, onEdit}: IOwnProps & ICo
   const tableItems: Array<{title: string; show: boolean; element: any}> = [
     {title: 'Title', show: true, element: book.title},
     {
-      title: `Author${book.authorsId.length > 1 && 's'}`,
+      title: `Author${book.authorsId.length > 1 ? 's' : ''}`,
       show: true,
       element: authors
         .filter(el => book.authorsId.includes(el.id))
@@ -59,7 +59,7 @@ const BookItem = ({book, bookCovers, authors, onRemove, onEdit}: IOwnProps & ICo
                     <td>
                       <strong>{el.title}</strong>
                     </td>
-                    <td className="text-lg-right">{el.element}</td>
+                    <td className="text-right">{el.element}</td>
                   </tr>
                 )
             )}

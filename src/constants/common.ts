@@ -43,6 +43,20 @@ export const INITIAL_DATA: IBook[] = [
     title: 'Test Book 3',
     authorsId: [1, 2],
     pages: 235,
-    year: 1997
+    year: 2001
+  },
+  {
+    id: 4,
+    title: 'Test Book 4',
+    authorsId: [1, 2],
+    pages: 235,
+    year: 2001
+  },
+  {
+    id: 5,
+    title: 'Test Book 5',
+    authorsId: [1, 2],
+    pages: 235,
+    year: 2011
   }
 ];

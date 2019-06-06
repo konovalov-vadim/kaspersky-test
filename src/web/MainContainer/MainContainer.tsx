@@ -8,6 +8,7 @@ import {Action} from 'redux';
 import {hideWarning, showWarning} from 'redux/dragDropWarningDucks';
 import {Redirect, Route, Switch} from 'react-router';
 import Home from 'web/Home/Home';
+import BookForm from 'web/BookForm/BookForm';
 
 interface IConnectProps {
   dispatch: ThunkDispatch<any, any, Action>;
@@ -39,6 +40,7 @@ class MainContainer extends React.PureComponent<IWithExtOpacity & IConnectProps>
         <StyledInnerContainer>
           <Switch>
             <Route path="/home" component={Home} />
+            <Route path="/book-add" component={BookForm} />
             <Redirect to="/home" />
           </Switch>
         </StyledInnerContainer>

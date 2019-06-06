@@ -37,3 +37,7 @@ export const ErrorMessage = styled.div`
   color: ${ColorPalette.red1};
   border-radius: 5px;
 `;
+
+export const StyledInput = styled.input`
+  ${commonCss}
+`;
