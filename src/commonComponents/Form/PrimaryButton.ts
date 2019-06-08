@@ -10,7 +10,7 @@ export default styled.button`
   transition: .3s;
   background: ${ColorPalette.blue1};
   border-radius: 7px;
-  outline: none;
+  outline: none !important;
   
   :hover {
     background: ${ColorPalette.blue2};

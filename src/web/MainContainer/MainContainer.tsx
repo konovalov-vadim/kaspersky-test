@@ -3,12 +3,13 @@ import {StyledAppTitle, StyledContainer, StyledInnerContainer} from 'web/MainCon
 import Utility from 'utility/Utility';
 import {IWithExtOpacity} from 'utility/withSmoothAppearance';
 import {connect} from 'react-redux';
-import {ThunkDispatch} from 'redux-thunk';
 import {Action} from 'redux';
 import {hideWarning, showWarning} from 'redux/dragDropWarningDucks';
 import {Redirect, Route, Switch} from 'react-router';
 import Home from 'web/Home/Home';
-import BookForm from 'web/BookForm/BookForm';
+import AddBook from 'web/AddBook/AddBook';
+import EditBook from 'web/EditBook/EditBook';
+import {ThunkDispatch} from "redux-thunk";
 
 interface IConnectProps {
   dispatch: ThunkDispatch<any, any, Action>;
@@ -40,7 +41,8 @@ class MainContainer extends React.PureComponent<IWithExtOpacity & IConnectProps>
         <StyledInnerContainer>
           <Switch>
             <Route path="/home" component={Home} />
-            <Route path="/book-add" component={BookForm} />
+            <Route path="/book-add" component={AddBook} />
+            <Route path="/book-edit/:id" component={EditBook} />
             <Redirect to="/home" />
           </Switch>
         </StyledInnerContainer>

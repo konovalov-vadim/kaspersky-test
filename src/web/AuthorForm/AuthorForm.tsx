@@ -11,6 +11,7 @@ import Input from 'commonComponents/Form/Input';
 import fieldValidation from 'commonComponents/Form/fieldValidation';
 import PrimaryButton from 'commonComponents/Form/PrimaryButton';
 import Label from 'commonComponents/Form/Label';
+import {FormApi} from 'final-form';
 
 interface IConnectProps {
   dispatch: ThunkDispatch<any, any, Action>;
@@ -31,7 +32,7 @@ const {required, composeValidators, validateLength} = fieldValidation;
 const formId = 'AuthorForm';
 
 class AuthorForm extends React.PureComponent<IOwnProps & IConnectProps> {
-  private onSave = (data: object) => {
+  private onSave = (data: object, form: FormApi) => {
     const {onAdd, dispatch} = this.props;
     const {name, surname} = data as FormValues;
 
@@ -43,6 +44,7 @@ class AuthorForm extends React.PureComponent<IOwnProps & IConnectProps> {
 
     dispatch(addAuthor(newAuthor));
     onAdd(newAuthor);
+    form.reset();
   };
 
   private renderForm = ({handleSubmit, pristine, invalid}: FormRenderProps) => (
@@ -51,7 +53,7 @@ class AuthorForm extends React.PureComponent<IOwnProps & IConnectProps> {
         <div className="col">
           <Label>Name</Label>
           <Field
-            name={'name'}
+            name="name"
             component={Input}
             placeholder="Type name here"
             validate={composeValidators(required, validateLength(0, 20))}
@@ -60,7 +62,7 @@ class AuthorForm extends React.PureComponent<IOwnProps & IConnectProps> {
         <div className="col">
           <Label>Surname</Label>
           <Field
-            name={'surname'}
+            name="surname"
             component={Input}
             placeholder="Type surname here"
             validate={composeValidators(required, validateLength(0, 20))}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ErrorMessage, IFormComponentProps, StyledInput} from 'commonComponents/Form/styled';
-import {FieldRenderProps} from 'react-final-form';
+import {FieldRenderProps} from "react-final-form";
 
 interface IOwnProps extends IFormComponentProps {
   placeholder?: string;

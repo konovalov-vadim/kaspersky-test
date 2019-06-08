@@ -3,7 +3,7 @@ import {IBookCover} from 'models/IBookCover';
 import {Moment} from 'moment';
 
 export interface IFormValues {
-  id: number;
+  id?: number;
   title: string;
   authors: IAuthor[];
   pages: number;

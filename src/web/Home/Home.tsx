@@ -10,7 +10,7 @@ import {orderBy} from 'lodash';
 import {Action} from 'redux';
 import {ThunkDispatch} from 'redux-thunk';
 import {removeBook} from 'redux/booksDucks';
-import {StyledButton, StyledContainer} from 'web/Home/styled';
+import {StyledLink, StyledContainer} from 'web/Home/styled';
 
 interface IConnectProps {
   books: IBook[];
@@ -42,7 +42,6 @@ class Home extends React.PureComponent<IConnectProps, ISateExtended> {
     lastSort: initSort
   };
 
-  private onEdit = (book: IBook) => null;
   private onRemove = (book: IBook) => this.props.dispatch(removeBook(book));
 
   private onChangeSort = (type: keyof IState) => {
@@ -68,9 +67,9 @@ class Home extends React.PureComponent<IConnectProps, ISateExtended> {
     return (
       <>
         <StyledContainer className="d-flex align-items-center">
-          <StyledButton style={{marginRight: '30px'}} to="/book-add">
+          <StyledLink style={{marginRight: '30px'}} to="/book-add">
             Add book
-          </StyledButton>
+          </StyledLink>
           <SortTools
             yearSort={yearSort}
             titleSort={titleSort}
@@ -81,7 +80,7 @@ class Home extends React.PureComponent<IConnectProps, ISateExtended> {
         </StyledContainer>
         <div className="d-flex align-content-stretch flex-wrap" style={{margin: '-15px -7.5px 0'}}>
           {this.sortBooks().map(el => (
-            <BookItem key={el.id} book={el} onEdit={this.onEdit} onRemove={this.onRemove} />
+            <BookItem key={el.id} book={el} onRemove={this.onRemove} />
           ))}
         </div>
       </>

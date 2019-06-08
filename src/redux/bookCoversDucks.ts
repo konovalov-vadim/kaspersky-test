@@ -15,9 +15,17 @@ const reducer: Reducer<IBookCover[], {payload: IBookCover; type: string}> = (
 ) => {
   switch (action.type) {
     case ADD:
-      return [action.payload, ...state];
+      const covers = [action.payload, ...state];
+
+      Utility.appLocalStorage.set('covers', covers);
+
+      return covers;
     case REMOVE:
-      return state.filter(el => el.id !== action.payload.id);
+      const covers2 = state.filter(el => el.id !== action.payload.id);
+
+      Utility.appLocalStorage.set('covers', covers2);
+
+      return covers2;
     case RESET:
       return [];
     default:

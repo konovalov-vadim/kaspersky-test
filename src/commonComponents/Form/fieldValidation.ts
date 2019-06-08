@@ -1,3 +1,6 @@
+import moment, {Moment} from 'moment';
+import Time from 'constants/Time';
+
 const required = (value: any) => {
   if (value) {
     if (value.length === 0) {
@@ -9,11 +12,19 @@ const required = (value: any) => {
   }
 };
 
-const validateLength = (min: number, max: number = Infinity) => (value: string) =>
+const validateLength = (min: number, max: number) => (value: string = '') =>
   value.length > max || value.length < min ? `Not valid length, only ${min}-${max} characters needed` : undefined;
 
-const validateNumber = (min: number, max: number = Infinity) => (value: number) =>
-  value > max || value < min ? `Not valid number, it should be between ${min} and ${max}` : undefined;
+const validatePages = (min: number = 0, max: number = 10000) => (value: number) =>
+  value > max || value < min ? `Not valid number of pages, it should be between ${min} and ${max}` : undefined;
+
+const validateYear = (min: number = 1800) => (value: number) =>
+  value < min ? `Not valid year, it should be not earlie than ${min}` : undefined;
+
+const validateReleaseDate = (value: Moment) =>
+  value && value.isBefore(moment('01.01.1800', Time.displayDateFormat))
+    ? 'Date should not be earlier than 01.01.1800'
+    : undefined;
 
 const validateISBN = (value: string) => {
   if (value) {
@@ -47,9 +58,7 @@ const validateISBN = (value: string) => {
   return undefined;
 };
 
-const composeValidators = (...validators: any[]) => {
-  console.log(validators);
-  return (value: any) => validators.reduce((error, validator) => error || validator(value), undefined);
-};
+const composeValidators = (...validators: any[]) => (value: any) =>
+  validators.reduce((error, validator) => error || validator(value), undefined);
 
-export default {required, validateISBN, composeValidators, validateLength, validateNumber};
+export default {required, validateISBN, composeValidators, validateLength, validatePages, validateYear, validateReleaseDate};

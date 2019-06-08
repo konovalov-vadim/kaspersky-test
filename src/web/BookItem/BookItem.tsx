@@ -7,6 +7,7 @@ import {IBookCover} from 'models/IBookCover';
 import {IAuthor} from 'models/IAuthor';
 import ColorPalette from 'constants/ColorPalette';
 import Typography from 'constants/Typography';
+import {StyledLink} from "web/Home/styled";
 
 interface IConnectProps {
   bookCovers: IBookCover[];
@@ -15,11 +16,10 @@ interface IConnectProps {
 
 interface IOwnProps {
   book: IBook;
-  onEdit: (book: IBook) => void;
   onRemove: (book: IBook) => void;
 }
 
-const BookItem = ({book, bookCovers, authors, onRemove, onEdit}: IOwnProps & IConnectProps) => {
+const BookItem = ({book, bookCovers, authors, onRemove}: IOwnProps & IConnectProps) => {
   const tableItems: Array<{title: string; show: boolean; element: any}> = [
     {title: 'Title', show: true, element: book.title},
     {
@@ -36,7 +36,6 @@ const BookItem = ({book, bookCovers, authors, onRemove, onEdit}: IOwnProps & ICo
     {title: 'ISBN', show: !!book.isbn, element: book.isbn}
   ];
 
-  const onEditClick = () => onEdit(book);
   const onRemoveClick = () => onRemove(book);
 
   return (
@@ -67,7 +66,7 @@ const BookItem = ({book, bookCovers, authors, onRemove, onEdit}: IOwnProps & ICo
         </StyledTable>
       </StyledInternalContainer>
       <StyledInternalContainer className="d-flex justify-content-between align-items-center">
-        <StyledButton onClick={onEditClick}>Edit</StyledButton>
+        <StyledLink to={`/book-edit/${book.id}`}>Edit</StyledLink>
         <StyledButton onClick={onRemoveClick}>Remove</StyledButton>
       </StyledInternalContainer>
     </StyledContainer>

@@ -7,7 +7,7 @@ export const StyledContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const StyledButton = styled(Link)`
+export const StyledLink = styled(Link)`
   color: ${ColorPalette.black1};
   text-decoration: none !important;
   ${StyledButtonCSS}
